@@ -1,29 +1,43 @@
+"""
+File: linkedlist_sort.py
+Author: Andy Siegel
+Course: CSC 120, Spring 2024
+Purpose: This python code creates two classes
+    a LinkedList class, and a Node class, then
+    takes in a file name and from the file makes
+    a LinkedList with the numbers of each line in
+    the file. The LinkedList is then sorted in
+    descending order and printed out. 
+"""
+
 class LinkedList:
     def __init__(self):
         self._head = None
     
     # sort the nodes in the list
     def sort(self):
-        to_be_sorted = self._head
-        sorted = None
-
-        while to_be_sorted is not None:
-            curr_element = self.remove()
-            if sorted is None or sorted.value() < curr_element.value():
-                self.add(curr_element)
+        """
+        This method sorts the linked list in descending order
+        then reassigns self._head to the new linked list's head 
+        Args: 
+            none
+        Returns: 
+            none
+        """
+        sorted_list = LinkedList()
+        while self._head:
+            current = self.remove()
+            if sorted_list._head is None or \
+            current._value >= sorted_list._head._value:
+                sorted_list.add(current)
             else:
-                prev = None
-                current = sorted
-                while current is not None and current.value() >= curr_element.value():
-                    prev = current
-                    current = current.next()
-                if current is None:
-                    self.insert(prev, curr_element)
-                else:
-                    self.insert(prev, curr_element)
+                prev = sorted_list._head
+                while prev._next and prev._next._value > current._value:
+                    prev = prev._next
+                self.insert(prev, current)
 
-        self._head = sorted
-    
+        self._head = sorted_list._head
+
     # add a node to the head of the list
     def add(self, node):
         node._next = self._head
@@ -42,6 +56,9 @@ class LinkedList:
         assert node1 != None
         node2._next = node1._next
         node1._next = node2
+
+    def is_empty(self):
+        return self._head == None
     
     def __str__(self):
         string = 'List[ '
@@ -67,14 +84,31 @@ class Node:
         return self._next
     
 def create_linked_list(filename):
+    """
+    This function creates a linked list using data 
+    from a given file, then sorts the list in
+    descending order, then prints it out.  
+    Args:
+        filename: the name of the file containing the data 
+        for the linked list
+    Returns:
+        None
+    """
     file = open(filename, 'r')
+    linked_list = LinkedList()
     for line in file:
-        print(line.split())
+        nums_list = line.split()
+        for num in nums_list:
+            linked_list.add(Node(int(num)))
+    file.close()
+    
+    linked_list.sort()
+    print(linked_list)
+            
     
 
 def main():
+    file_name = input()
+    create_linked_list(file_name)
 
-    # print("hello :3 u just ran main()")
-    print('List[ 1; 1; 1; ]')
-    # file_name = input()
-    # create_linked_list(file_name)
+main()

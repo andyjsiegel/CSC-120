@@ -1,3 +1,4 @@
+import linecache
 import requests
 import zipfile
 import io
@@ -99,14 +100,21 @@ def run_test_cases():
                                         with open(file_path, 'r') as f:
                                             stdin_content = f.read()
 
+                                        stdin_and_path = '/'.join(os.path.splitext(file_path)[0].split('/')[0:2]) + f'/text_files/{stdin_content}'
                                         # Redirect sys.stdin to use the contents of the .stdin file
-                                        sys.stdin = io.StringIO(stdin_content)
+                                        sys.stdin = io.StringIO(stdin_and_path)
 
                                         # Redirect sys.stdout to capture the output
                                         sys.stdout = io.StringIO()
 
                                         # Call the main function with the redirected input
-                                        getattr(module, 'main', None)()
+                                        try:
+                                            result = getattr(module, 'main', None)()
+                                        except Exception as e:
+                                            line_number = sys.exc_info()[-1].tb_lineno
+                                            line_of_code = linecache.getline(program_path, line_number)
+                                            print(f"An error occurred in {program_path} at line {line_number}: {e}\n\t{line_of_code}")
+
 
                                         # Get the output produced by the main function
                                         actual_output = sys.stdout.getvalue().strip()
