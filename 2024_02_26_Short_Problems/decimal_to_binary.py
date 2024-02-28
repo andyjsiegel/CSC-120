@@ -27,3 +27,4 @@ assert decimal2binary(35) == '100011'
 assert decimal2binary(255) == '11111111'
 assert decimal2binary(19) == '10011'
 assert decimal2binary(233) == '11101001'
+print('all tests passed')
