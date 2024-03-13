@@ -222,7 +222,7 @@ def handle_csv(filename):
                 if len(word) > 2:
                     cleaned_list.append(word.lower())
             for clean_word in cleaned_list:
-                    clean_words_counter.update_count(clean_word)
+                clean_words_counter.update_count(clean_word)
                     
     infile.close()
     clean_words_counter.sort()
