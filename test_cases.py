@@ -1,4 +1,4 @@
-import linecache
+import traceback
 import requests
 import zipfile
 import io
@@ -111,9 +111,11 @@ def run_test_cases():
                                         try:
                                             result = getattr(module, 'main', None)()
                                         except Exception as e:
-                                            line_number = sys.exc_info()[-1].tb_lineno
-                                            line_of_code = linecache.getline(program_path, line_number)
-                                            print(f"An error occurred in {program_path} at line {line_number}: {e}\n\t{line_of_code}")
+                                            exc_type, exc_obj, tb = sys.exc_info()
+                                            frame = tb.tb_frame
+                                            line_number = traceback.extract_tb(tb)[-1].lineno
+                                            file_name = frame.f_code.co_filename
+                                            print(f"An error occurred at line {line_number} in {file_name}: {e}")
 
 
                                         # Get the output produced by the main function
@@ -140,5 +142,5 @@ run_test_cases()
 
 
 
-# get_test_cases("https://www2.cs.arizona.edu/~abureyanahmed/ASSIGNMENTS/assg05-long.zip") 
+# get_test_cases("https://www2.cs.arizona.edu/~abureyanahmed/ASSIGNMENTS/assg06-long.zip") 
         
