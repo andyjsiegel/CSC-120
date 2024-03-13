@@ -75,7 +75,6 @@ class LinkedList:
     def add(self, node):
         node._next = self._head
         self._head = node
-        self._all_words_list += [node.word()]
         
     # remove a node from the head of the list and return the node
     # source: long problem for sorting a linked lists
