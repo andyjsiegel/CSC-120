@@ -137,10 +137,16 @@ def run_test_cases():
             except ImportError as e:
                 print(f"Error importing or executing main() from {folder_name}.py: {e}")
 
+# if __name__ == "__main__":
+#     get_or_run = input('get/run (g/r):\n')
+#     if get_or_run == 'g':
+#         url = input('URL:\n')
+#         get_test_cases(url) 
+#     if get_or_run == 'r':
+#         run_test_cases()
+#     else:
+#         raise Exception('Invalid Input')
+
 run_test_cases()
 
-
-
-
-# get_test_cases("https://www2.cs.arizona.edu/~abureyanahmed/ASSIGNMENTS/assg07-long.zip") 
         
