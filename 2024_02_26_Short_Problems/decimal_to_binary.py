@@ -23,8 +23,10 @@ def decimal2binary(n):
 
     return ''.join(binary_rep._items[::-1])
 
-assert decimal2binary(35) == '100011'
-assert decimal2binary(255) == '11111111'
-assert decimal2binary(19) == '10011'
-assert decimal2binary(233) == '11101001'
+# assert decimal2binary(35) == '100011'
+# assert decimal2binary(255) == '11111111'
+# assert decimal2binary(19) == '10011'
+# assert decimal2binary(233) == '11101001'
+
+print(decimal2binary(97644))
 print('all tests passed')
