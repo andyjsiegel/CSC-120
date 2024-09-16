@@ -18,27 +18,15 @@ class Stack:
 
 
 
-def is_balanced(symbols):
+def is_balanced(text, lsym, rsym):
     delimiters_stack = Stack()
-    for char in symbols:
-        if char == '[':
+    for char in text:
+        if char == lsym:
             delimiters_stack.push(char)
-        if char == ']':
+        if char == rsym:
             if delimiters_stack.is_empty() or delimiters_stack.pop() != '[':
                 return False
-        if char == '(':
-            delimiters_stack.push(char)
-        if char == ')':
-            if delimiters_stack.is_empty() or delimiters_stack.pop() != '(':
-                return False
-        if char == '{':
-            delimiters_stack.push(char)
-        if char == '}':
-            if delimiters_stack.is_empty() or delimiters_stack.pop() != '{':
-                return False
-            
-        
-    return delimiters_stack.is_empty()
+            return delimiters_stack.is_empty()
 
 
 

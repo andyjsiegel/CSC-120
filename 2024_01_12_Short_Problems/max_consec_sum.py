@@ -10,17 +10,19 @@ def max_consec_sum(numbers, n):
 
 
 
-print(max_consec_sum([10,2,-3,4,3],1)) 
-# 10
+# print(max_consec_sum([10,2,-3,4,3],1)) 
+# # 10
 
-print(max_consec_sum([10,2,-3,4,3],2))
-# 12
+# print(max_consec_sum([10,2,-3,4,3],2))
+# # 12
 
-print(max_consec_sum([10,2,-3,4,3],3))
-# 9
+# print(max_consec_sum([10,2,-3,4,3],3))
+# # 9
 
-print(max_consec_sum([10,2,-3,4,3],4))
-# 13
+# print(max_consec_sum([10,2,-3,4,3],4))
+# # 13
 
-print(max_consec_sum([10,2,-3,4,3],5))
-# 16
+# print(max_consec_sum([10,2,-3,4,3],5))
+# # 16
+otherNumbers = [8, 1, 3, 8, 2]
+print(max_consec_sum(otherNumbers, 3));  # 13

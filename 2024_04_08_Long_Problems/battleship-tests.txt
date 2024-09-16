@@ -1,0 +1,24 @@
+# Test 1 (error)
+# This tests whether the program can handle a non-existent file
+the input is an invalid file name (file that isn't in the directory)
+# End of test
+ 
+# Test 2 (error)
+# This tests whether the program can handle an input file of a paragraph of latin words.
+the input is the path to a file with the aforementioned paragraph.
+# End of test
+ 
+# Test 3 (edge case)
+# This tests whether the program can handle one singular guess
+the input is a path to the file with the contents '1 7'
+# End of test
+ 
+# Test 4 (regular)
+# This tests the program on a full example placement and example guess.
+the input is example-placement.txt and example-guess.txt
+# End of test
+ 
+# Test 5 (regular)
+# This tests the program's behavior on a second full example placement and guess
+the input is example-placement2.txt and example-guess2.txt
+# End of test
